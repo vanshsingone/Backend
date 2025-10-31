@@ -6,6 +6,7 @@ import { app } from "./app.js";
 dotenv.config({
     path: './.env'
 })
+//console.log("SECRET IN INDEX:", process.env.ACCESS_TOKEN_SECRET);
 
 
 connetDB()

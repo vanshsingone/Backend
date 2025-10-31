@@ -60,7 +60,8 @@ userSchema.pre("save",async function (next){
 })
 
 userSchema.methods.generateAccessToken = function(){
-    jwt.sign(
+   // console.log("SECRET IN MODEL:", process.env.ACCESS_TOKEN_SECRET);
+    return jwt.sign(
         {
             _id: this._id,
             email: this.email,
@@ -74,7 +75,9 @@ userSchema.methods.generateAccessToken = function(){
     )
 }
 userSchema.methods.generateRefreshToken = function(){
-    jwt.sign(
+    // console.log("REFRESH SECRET:", process.env.REFRESH_TOKEN_SECRET);
+    // console.log("REFRESH EXPIRY:", process.env.REFRESH_TOKEN_EXPIRY);
+     return jwt.sign(
         {
             _id: this._id,
             
