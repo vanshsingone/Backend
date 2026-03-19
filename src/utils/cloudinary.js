@@ -15,11 +15,18 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type: "auto"
         })
         // file has been uploaded successfully
-        //console.log("file is uploaded on cloudinary",response.url);
-        fs.unlinkSync(localFilePath)
+        try {
+            if (localFilePath) fs.unlinkSync(localFilePath)
+        } catch (err) {
+            console.error("Failed to delete local temp file:", err)
+        }
         return response;
     } catch (error) {
-        fs.unlinkSync(localFilePath) // REMOVE THE LOCALLY SAVED TEMPORARY FILE AS THE IPLOAD OPTION GOT FAILED
+        try {
+            if (localFilePath) fs.unlinkSync(localFilePath) // REMOVE THE LOCALLY SAVED TEMPORARY FILE AS THE UPLOAD OPTION GOT FAILED
+        } catch (unlinkError) {
+            // file may already be removed, ignore
+        }
         return null;
     }
 }

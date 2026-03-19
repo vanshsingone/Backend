@@ -52,7 +52,7 @@ const registerUser = asyncHandler(async (req,res) => {
         throw new ApiError(409,"User with email or username already exists")
     }
 
-    const avatarLocalPath =  req.files?.avatar[0]?.path;
+    const avatarLocalPath =  req.files?.avatar?.[0]?.path;
     // const coverImageLocalPath = req.files?.coverImage[0]?.path;
     //console.log(req.files);
 
@@ -155,8 +155,8 @@ const logoutUser = asyncHandler(async(req,res) => {
     User.findByIdAndUpdate(
         req.user._id,
         {
-            $set: {
-                refreshToken: undefined
+            $unset: {
+                refreshToken: 1
             }
         },
         {
@@ -281,7 +281,7 @@ const updateUserAvatar = asyncHandler(async (req,res) => {
         }
     },
     {new: true}
-   ).select("-password")
+   ).select("-password -refreshToken")
 
    return res.status(200).json(
     new ApiResponse(200,user,"avatar updated successfully")
