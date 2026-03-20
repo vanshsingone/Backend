@@ -1,0 +1,250 @@
+.tweets-page {
+    padding-top: 20px;
+    max-width: 640px;
+}
+
+.tweets-page h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.tweet-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.tweet-form img {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+}
+
+.tweet-form-input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tweet-form-input textarea {
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    resize: none;
+    min-height: 60px;
+}
+
+.tweet-form-input textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.tweet-form-input button {
+    align-self: flex-end;
+    padding: 6px 20px;
+    background: var(--accent);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.tweet-form-input button:hover {
+    background: var(--accent-hover);
+}
+
+.tweet-form-input button:disabled {
+    opacity: 0.5;
+}
+
+.tweet-card {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+    transition: border-color var(--transition-fast);
+}
+
+.tweet-card:hover {
+    border-color: var(--bg-hover);
+}
+
+.tweet-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.tweet-body {
+    flex: 1;
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.tweet-author {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.tweet-time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.tweet-content {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.tweet-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.tweet-actions button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.tweet-actions button:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.tweet-actions button.danger:hover {
+    color: var(--error);
+}
+
+/* Playlists Page */
+.playlists-page {
+    padding-top: 20px;
+}
+
+.playlists-page h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.playlist-create-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    flex-wrap: wrap;
+}
+
+.playlist-create-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 14px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.playlist-create-form button {
+    padding: 8px 20px;
+    background: var(--accent);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.playlist-create-form button:hover {
+    background: var(--accent-hover);
+}
+
+.playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.playlist-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+}
+
+.playlist-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--bg-hover);
+}
+
+.playlist-card-thumbnail {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    position: relative;
+}
+
+.playlist-card-count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.playlist-card-info {
+    padding: 12px 14px;
+}
+
+.playlist-card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.playlist-card-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

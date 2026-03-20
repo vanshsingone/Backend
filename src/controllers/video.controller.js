@@ -46,6 +46,28 @@ const getAllVideos = asyncHandler(async (req, res) => {
         },
         {
             $sort: sort
+        },
+        {
+            $lookup: {
+                from: "users",
+                localField: "owner",
+                foreignField: "_id",
+                as: "owner",
+                pipeline: [
+                    {
+                        $project: {
+                            fullName: 1,
+                            username: 1,
+                            avatar: 1
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            $addFields: {
+                owner: { $first: "$owner" }
+            }
         }
     ])
 
@@ -103,31 +125,51 @@ const getVideoById = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Invalid video id")
     }
 
-    const video = await Video.findByIdAndUpdate(
-        videoId,
+    // Increment views
+    await Video.findByIdAndUpdate(videoId, { $inc: { views: 1 } })
+
+    // Fetch video with owner details
+    const video = await Video.aggregate([
         {
-            $inc: {
-                views: 1
+            $match: { _id: new mongoose.Types.ObjectId(videoId) }
+        },
+        {
+            $lookup: {
+                from: "users",
+                localField: "owner",
+                foreignField: "_id",
+                as: "owner",
+                pipeline: [
+                    {
+                        $project: {
+                            fullName: 1,
+                            username: 1,
+                            avatar: 1
+                        }
+                    }
+                ]
             }
         },
         {
-            new: true
+            $addFields: {
+                owner: { $first: "$owner" }
+            }
         }
-    )
+    ])
 
-    if (!video) {
+    if (!video || video.length === 0) {
         throw new ApiError(404, "Video not found")
     }
 
     if (req.user?._id) {
         await User.findByIdAndUpdate(req.user._id, {
-            $addToSet: { watchHistory: video._id }
+            $addToSet: { watchHistory: video[0]._id }
         })
     }
 
     return res
         .status(200)
-        .json(new ApiResponse(200, video, "Video fetched successfully"))
+        .json(new ApiResponse(200, video[0], "Video fetched successfully"))
 })
 
 const updateVideo = asyncHandler(async (req, res) => {

@@ -1,0 +1,166 @@
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    padding: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.auth-logo svg {
+    color: var(--accent);
+    font-size: 2rem;
+}
+
+.auth-logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), #ff6b81);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 32px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent);
+}
+
+.form-group input[type="file"] {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.form-group input[type="file"]::file-selector-button {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background var(--transition-fast);
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: var(--bg-hover);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent), #e0354a);
+    color: white;
+    transition: all var(--transition-normal);
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.35);
+}
+
+.auth-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.auth-footer a {
+    color: var(--accent);
+    font-weight: 500;
+    margin-left: 4px;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.auth-error {
+    background: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    color: var(--error);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.auth-row {
+    display: flex;
+    gap: 12px;
+}
+
+.auth-row .form-group {
+    flex: 1;
+}

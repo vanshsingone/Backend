@@ -10,9 +10,11 @@ cloudinary.config({
 const uploadOnCloudinary = async (localFilePath) => {
     try {
         if(!localFilePath) return null
-        // upload file on cloudinary
-          const response = await cloudinary.uploader.upload(localFilePath,{
-            resource_type: "auto"
+        // upload file on cloudinary (use upload_large for chunked upload of big files)
+          const response = await cloudinary.uploader.upload_large(localFilePath,{
+            resource_type: "auto",
+            chunk_size: 6000000,
+            timeout: 600000
         })
         // file has been uploaded successfully
         try {

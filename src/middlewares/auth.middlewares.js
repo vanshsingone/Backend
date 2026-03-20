@@ -12,7 +12,6 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
         if (!token) {
             throw new ApiError(401, "Unauthorized request")
         }
-        console.log("Token being verified:", token)
     
         const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
     
@@ -31,3 +30,26 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
     }
 
 })
+
+// Optional JWT - sets req.user if logged in, but doesn't block if not
+export const optionalVerifyJWT = async (req, _, next) => {
+    try {
+        const token =
+            req.cookies?.accessToken ||
+            req.header("Authorization")?.replace("Bearer ", "")
+
+        if (!token) {
+            return next()
+        }
+
+        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+        const user = await User.findById(decodedToken?._id).select("-password -refreshToken")
+
+        if (user) {
+            req.user = user
+        }
+    } catch (error) {
+        // Token invalid or expired - just continue without user
+    }
+    next()
+}

@@ -1,0 +1,220 @@
+.channel-page {
+    padding-top: 0;
+}
+
+.channel-banner {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: -40px;
+}
+
+.channel-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.channel-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 0 24px;
+    margin-bottom: 24px;
+}
+
+.channel-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-full);
+    border: 4px solid var(--bg-primary);
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.channel-info {
+    flex: 1;
+    padding-bottom: 8px;
+}
+
+.channel-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.channel-handle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.channel-stats {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.channel-stats span::after {
+    content: "•";
+    margin: 0 6px;
+}
+
+.channel-stats span:last-child::after {
+    content: "";
+}
+
+.channel-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.channel-tab {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.channel-tab:hover {
+    color: var(--text-primary);
+}
+
+.channel-tab.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent);
+}
+
+/* Dashboard Page */
+.dashboard-page {
+    padding-top: 20px;
+}
+
+.dashboard-page h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    transition: transform var(--transition-fast);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-card-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.stat-card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), #ff6b81);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboard-videos h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Upload Page */
+.upload-page {
+    padding-top: 20px;
+    max-width: 700px;
+}
+
+.upload-page h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.upload-dropzone {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    text-align: center;
+    transition: border-color var(--transition-fast);
+    cursor: pointer;
+}
+
+.upload-dropzone:hover {
+    border-color: var(--accent);
+}
+
+.upload-dropzone svg {
+    font-size: 3rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.upload-dropzone p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.upload-dropzone .selected-file {
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.upload-progress {
+    margin-top: 16px;
+}
+
+.upload-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.upload-progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 300ms ease;
+}
+
+.upload-progress-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    text-align: center;
+}
