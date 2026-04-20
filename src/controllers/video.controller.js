@@ -100,8 +100,7 @@ const publishAVideo = asyncHandler(async (req, res) => {
     const videoFile = await uploadVideoOnCloudinary(videoFileLocalPath)
     const thumbnail = await uploadOnCloudinary(thumbnailLocalPath)
 
-    console.log("CLOUDINARY DEBUG - Video Result:", videoFile ? "Success" : "NULL");
-    console.log("CLOUDINARY DEBUG - Thumb Result:", thumbnail ? "Success" : "NULL");
+
 
     if (!videoFile?.url || !thumbnail?.url) {
         throw new ApiError(500, "Error while uploading video or thumbnail")
