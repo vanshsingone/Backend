@@ -10,11 +10,9 @@ cloudinary.config({
 const uploadOnCloudinary = async (localFilePath) => {
     try {
         if(!localFilePath) return null
-        // upload file on cloudinary (use upload_large for chunked upload of big files)
-          const response = await cloudinary.uploader.upload_large(localFilePath,{
-            resource_type: "auto",
-            chunk_size: 6000000,
-            timeout: 600000
+        // upload file on cloudinary (standard for images)
+        const response = await cloudinary.uploader.upload(localFilePath, {
+            resource_type: "auto"
         })
         // file has been uploaded successfully
         try {
@@ -25,12 +23,34 @@ const uploadOnCloudinary = async (localFilePath) => {
         return response;
     } catch (error) {
         try {
-            if (localFilePath) fs.unlinkSync(localFilePath) // REMOVE THE LOCALLY SAVED TEMPORARY FILE AS THE UPLOAD OPTION GOT FAILED
-        } catch (unlinkError) {
-            // file may already be removed, ignore
-        }
+            if (localFilePath) fs.unlinkSync(localFilePath)
+        } catch (unlinkError) {}
         return null;
     }
 }
 
-export {uploadOnCloudinary}
+const uploadVideoOnCloudinary = async (localFilePath) => {
+    try {
+        if(!localFilePath) return null
+        // upload file on cloudinary (use upload_large for chunked upload of big files)
+        const response = await cloudinary.uploader.upload_large(localFilePath, {
+            resource_type: "auto",
+            chunk_size: 6000000,
+            timeout: 600000
+        })
+        try {
+            if (localFilePath) fs.unlinkSync(localFilePath)
+        } catch (err) {
+            console.error("Failed to delete local temp file:", err)
+        }
+        return response;
+    } catch (error) {
+        console.error("CLOUDINARY VIDEO ERROR:", error)
+        try {
+            if (localFilePath) fs.unlinkSync(localFilePath)
+        } catch (unlinkError) {}
+        return null;
+    }
+}
+
+export { uploadOnCloudinary, uploadVideoOnCloudinary }
