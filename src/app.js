@@ -1,6 +1,13 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import fs from "fs"
+
+// Ensure temp upload directory exists (needed for Render's ephemeral filesystem)
+const tempDir = "./public/temp"
+if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true })
+}
 
 const app = express()
 
