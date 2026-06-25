@@ -1,4 +1,4 @@
-# ▶️ VidTube – Full-Stack YouTube Clone
+# ▶️ VidTube – Full-Stack Video Sharing Application
 
 ![VidTube Banner](https://img.shields.io/badge/Status-Completed-success)
 ![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
