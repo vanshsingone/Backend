@@ -9,11 +9,23 @@ if (!fs.existsSync(tempDir)) {
     fs.mkdirSync(tempDir, { recursive: true })
 }
 
+const allowedOrigins = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",") : []
+
 const app = express()
 
 app.use(
     cors({
-        origin: process.env.CORS_ORIGIN,
+        origin: function (origin, callback) {
+            // Allow requests with no origin (mobile apps, curl, etc.)
+            if (!origin) return callback(null, true)
+            // Allow any vercel.app subdomain
+            if (origin.endsWith(".vercel.app")) return callback(null, true)
+            // Allow explicitly listed origins
+            if (allowedOrigins.includes(origin)) return callback(null, true)
+            // Allow localhost for development
+            if (origin.includes("localhost")) return callback(null, true)
+            callback(new Error("Not allowed by CORS"))
+        },
         credentials: true
     })
 )
