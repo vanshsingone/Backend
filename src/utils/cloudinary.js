@@ -12,7 +12,8 @@ const uploadOnCloudinary = async (localFilePath) => {
         if(!localFilePath) return null
         // upload file on cloudinary (standard for images)
         const response = await cloudinary.uploader.upload(localFilePath, {
-            resource_type: "auto"
+            resource_type: "auto",
+            secure: true
         })
         // file has been uploaded successfully
         try {
@@ -22,6 +23,7 @@ const uploadOnCloudinary = async (localFilePath) => {
         }
         return response;
     } catch (error) {
+        console.error("CLOUDINARY IMAGE UPLOAD ERROR:", error.message || error)
         try {
             if (localFilePath) fs.unlinkSync(localFilePath)
         } catch (unlinkError) {}
@@ -37,7 +39,8 @@ const uploadVideoOnCloudinary = async (localFilePath) => {
             cloudinary.uploader.upload_large(localFilePath, {
                 resource_type: "auto",
                 chunk_size: 6000000,
-                timeout: 600000
+                timeout: 600000,
+                secure: true
             }, (error, result) => {
                 if (error) {
                     reject(error);

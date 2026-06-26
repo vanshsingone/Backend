@@ -63,13 +63,17 @@ const registerUser = asyncHandler(async (req,res) => {
     
 
     if (!avatarLocalPath) {
+        console.error("REGISTER ERROR: No avatar file path from multer. req.files:", JSON.stringify(req.files ? Object.keys(req.files) : "undefined"))
         throw new ApiError(400,"Avatar file is required")
     }
     
+    console.log("REGISTER: Uploading avatar from path:", avatarLocalPath)
     const avatar = await uploadOnCloudinary(avatarLocalPath)
     const coverImage = await uploadOnCloudinary(coverImageLocalPath)
+    console.log("REGISTER: Avatar upload result:", avatar ? "Success" : "FAILED")
 
     if(!avatar){
+        console.error("REGISTER ERROR: Cloudinary avatar upload returned null")
         throw new ApiError(400,"Avatar file is required")
     }
 
