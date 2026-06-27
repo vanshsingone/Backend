@@ -68,76 +68,103 @@
 }
 
 .subscribe-btn {
-    padding: 8px 20px;
-    border-radius: var(--radius-lg);
+    padding: 10px 24px;
+    border-radius: var(--radius-full);
     font-size: 0.85rem;
-    font-weight: 600;
-    transition: all var(--transition-fast);
+    font-weight: 700;
+    transition: all var(--transition-normal);
 }
 
 .subscribe-btn.subscribed {
     background: var(--bg-tertiary);
     color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.subscribe-btn.subscribed:hover {
+    background: var(--bg-hover);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .subscribe-btn.not-subscribed {
-    background: var(--accent);
+    background: var(--accent-gradient);
     color: white;
 }
 
 .subscribe-btn.not-subscribed:hover {
-    background: var(--accent-hover);
+    background: var(--accent-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm), var(--glow-accent);
+}
+
+.subscribe-btn:active {
+    transform: scale(0.95);
 }
 
 .video-info-buttons {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .like-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
+    gap: 8px;
+    padding: 10px 20px;
     background: var(--bg-tertiary);
-    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
     font-size: 0.85rem;
-    font-weight: 500;
-    transition: all var(--transition-fast);
+    font-weight: 600;
+    transition: all var(--transition-normal);
 }
 
 .like-btn:hover {
     background: var(--bg-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.like-btn:active {
+    transform: scale(0.95);
 }
 
 .like-btn.liked {
     background: var(--accent-light);
     color: var(--accent);
+    border-color: rgba(255, 0, 85, 0.3);
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.1);
 }
 
 .video-description {
-    margin-top: 16px;
-    padding: 12px 16px;
-    background: var(--bg-tertiary);
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+}
+
+.video-description:hover {
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .video-description-meta {
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: 0.88rem;
+    font-weight: 700;
     margin-bottom: 8px;
-    color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 .video-description-meta span {
-    margin-right: 8px;
+    margin-right: 12px;
 }
 
 .video-description-text {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     line-height: 1.6;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     white-space: pre-wrap;
 }
 

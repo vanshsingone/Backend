@@ -4,57 +4,74 @@
     left: 0;
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));
-    background: var(--bg-secondary);
+    background: rgba(10, 10, 18, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-right: 1px solid var(--border);
-    padding: 12px 0;
+    padding: 16px 0;
     overflow-y: auto;
     z-index: 50;
+    transition: all var(--transition-normal);
 }
 
 .sidebar-section {
     padding: 0 12px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .sidebar-section:not(:last-child) {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 16px;
 }
 
 .sidebar-section-title {
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.72rem;
+    font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 8px 12px 4px;
+    letter-spacing: 1.5px;
+    padding: 8px 16px 6px;
 }
 
 .sidebar-item {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 8px 12px;
+    padding: 10px 16px;
     border-radius: var(--radius-md);
     color: var(--text-secondary);
-    font-size: 0.875rem;
-    font-weight: 400;
-    transition: all var(--transition-fast);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
     cursor: pointer;
 }
 
 .sidebar-item:hover {
-    background: var(--bg-tertiary);
+    background: var(--bg-hover);
     color: var(--text-primary);
+    padding-left: 20px;
 }
 
 .sidebar-item.active {
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
-    font-weight: 500;
+    background: var(--accent-gradient);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.25);
+}
+
+.sidebar-item.active svg {
+    color: white;
 }
 
 .sidebar-item svg {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+    color: var(--text-secondary);
     flex-shrink: 0;
+    transition: all var(--transition-normal);
 }
+
+.sidebar-item:hover svg {
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
