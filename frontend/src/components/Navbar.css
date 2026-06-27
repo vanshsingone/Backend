@@ -4,16 +4,13 @@
     left: 0;
     right: 0;
     height: var(--navbar-height);
-    background: rgba(10, 10, 18, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--bg-secondary);
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
     z-index: 100;
-    transition: all var(--transition-normal);
 }
 
 .navbar-left {
@@ -26,28 +23,24 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
 }
 
 .navbar-logo svg {
     color: var(--accent);
-    font-size: 1.8rem;
-    filter: drop-shadow(0 2px 8px rgba(255, 0, 85, 0.4));
+    font-size: 1.7rem;
     transition: transform var(--transition-normal);
 }
 
 .navbar-logo:hover svg {
-    transform: rotate(10deg) scale(1.1);
+    transform: scale(1.05);
 }
 
 .navbar-logo span {
-    background: linear-gradient(135deg, var(--accent), #8a2be2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
 }
 
 .navbar-search {
@@ -62,9 +55,9 @@
 .navbar-search input {
     flex: 1;
     height: 40px;
-    padding: 0 20px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1.5px solid var(--border);
+    padding: 0 16px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
     border-radius: var(--radius-full) 0 0 var(--radius-full);
     color: var(--text-primary);
     font-size: 0.9rem;
@@ -77,21 +70,19 @@
 
 .navbar-search input:focus {
     border-color: var(--accent);
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 15px rgba(255, 0, 85, 0.15);
 }
 
 .navbar-search-btn {
     height: 40px;
     width: 60px;
     background: var(--bg-tertiary);
-    border: 1.5px solid var(--border);
+    border: 1px solid var(--border);
     border-left: none;
     border-radius: 0 var(--radius-full) var(--radius-full) 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
     cursor: pointer;
     transition: all var(--transition-normal);
@@ -112,9 +103,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 18px;
-    background: var(--accent-light);
-    border: 1px solid rgba(255, 0, 85, 0.2);
+    padding: 8px 16px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
     border-radius: var(--radius-full);
     font-size: 0.85rem;
     font-weight: 600;
@@ -123,10 +114,8 @@
 }
 
 .navbar-upload-btn:hover {
-    background: var(--accent-gradient);
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm), var(--glow-accent);
+    background: var(--bg-hover);
+    transform: translateY(-1px);
 }
 
 .navbar-avatar {
@@ -135,14 +124,12 @@
     border-radius: var(--radius-full);
     object-fit: cover;
     cursor: pointer;
-    border: 2px solid var(--border);
+    border: 1px solid var(--border);
     transition: all var(--transition-normal);
 }
 
 .navbar-avatar:hover {
-    border-color: var(--accent);
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+    border-color: var(--text-secondary);
 }
 
 .navbar-user-menu {
@@ -154,16 +141,14 @@
     top: 48px;
     right: 0;
     width: 220px;
-    background: rgba(18, 18, 29, 0.85);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     padding: 8px 0;
     z-index: 200;
     transform-origin: top right;
-    animation: dropdownReveal 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: dropdownReveal 200ms ease forwards;
 }
 
 @keyframes dropdownReveal {

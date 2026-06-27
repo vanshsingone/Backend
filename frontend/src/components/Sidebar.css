@@ -4,14 +4,11 @@
     left: 0;
     width: var(--sidebar-width);
     height: calc(100vh - var(--navbar-height));
-    background: rgba(10, 10, 18, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--bg-secondary);
     border-right: 1px solid var(--border);
     padding: 16px 0;
     overflow-y: auto;
     z-index: 50;
-    transition: all var(--transition-normal);
 }
 
 .sidebar-section {
@@ -29,7 +26,7 @@
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     padding: 8px 16px 6px;
 }
 
@@ -47,24 +44,24 @@
 }
 
 .sidebar-item:hover {
-    background: var(--bg-hover);
+    background: var(--bg-tertiary);
     color: var(--text-primary);
-    padding-left: 20px;
 }
 
 .sidebar-item.active {
-    background: var(--accent-gradient);
-    color: white;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.25);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 .sidebar-item.active svg {
-    color: white;
+    color: var(--accent);
 }
 
 .sidebar-item svg {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--text-secondary);
     flex-shrink: 0;
     transition: all var(--transition-normal);
@@ -72,6 +69,6 @@
 
 .sidebar-item:hover svg {
     color: var(--text-primary);
-    transform: scale(1.1);
 }
+
 
